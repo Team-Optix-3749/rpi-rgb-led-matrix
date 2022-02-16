@@ -231,6 +231,9 @@ static bool FlagInit(int &argc, char **&argv,
                 *it, OPTION_PREFIX);
       }
     }
+    mopts->hardware_mapping = "adafruit-hat";
+    mopts->cols = 64;
+    mopts->rows = 32;
     unused_options.push_back(*it);
   }
 
