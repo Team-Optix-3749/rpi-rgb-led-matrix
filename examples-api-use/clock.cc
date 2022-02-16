@@ -154,7 +154,7 @@ int main(int argc, char *argv[]) {
 
   char text_buffer[256];
   struct timespec next_time;
-  next_time.tv_sec = 8*60*60 + 2*60;
+  next_time.tv_sec = time(NULL);
   next_time.tv_nsec = 0;
   struct tm tm;
 
@@ -182,12 +182,12 @@ int main(int argc, char *argv[]) {
     }
 
     // Wait until we're ready to show it.
-    sleep(1000);
+    clock_nanosleep(CLOCK_REALTIME, TIMER_ABSTIME, &next_time, NULL);
 
     // Atomic swap with double buffer
     offscreen = matrix->SwapOnVSync(offscreen);
 
-    next_time.tv_sec -= 1;
+    next_time.tv_sec += 1;
   }
 
   // Finished. Shut down the RGB matrix.
