@@ -217,7 +217,6 @@ static int usage(const char *progname) {
 }
 
 int main(int argc, char *argv[]) {
-  int demo = -1;
   int scroll_ms = 30;
 
   const char *demo_parameter = NULL;
@@ -249,11 +248,6 @@ int main(int argc, char *argv[]) {
 
   if (optind < argc) {
     demo_parameter = argv[optind];
-  }
-
-  if (demo < 0) {
-    fprintf(stderr, TERM_ERR "Expected required option -D <demo>\n" TERM_NORM);
-    return usage(argv[0]);
   }
 
   RGBMatrix *matrix = RGBMatrix::CreateFromOptions(matrix_options, runtime_opt);
