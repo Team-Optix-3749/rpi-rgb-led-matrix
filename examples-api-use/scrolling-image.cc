@@ -268,7 +268,12 @@ int main(int argc, char *argv[]) {
   if (!demo_parameter) return -1;
 
   ImageScroller *scroller = new ImageScroller(matrix, 1, scroll_ms);
-  if (!scroller->LoadPPM(demo_parameter))
+
+  std::string ppmFileStr = std::string("../images/")+std::string(demo_parameter);
+
+  const char* ppmFile = ppmFileStr.c_str();
+
+  if (!scroller->LoadPPM(ppmFile))
     return 1;
 
   // Set up an interrupt handler to be able to stop animations while they go

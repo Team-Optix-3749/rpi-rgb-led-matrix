@@ -138,7 +138,7 @@ int main(int argc, char *argv[]) {
   if (matrix == NULL)
     return 1;
 
-  ImageVector images = LoadImageAndScaleImage(filename,
+  ImageVector images = LoadImageAndScaleImage("../images/"+filename,
                                               matrix->width(),
                                               matrix->height());
   switch (images.size()) {
