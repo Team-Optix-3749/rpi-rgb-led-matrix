@@ -1,31 +1,18 @@
 Controlling RGB LED display with Raspberry Pi GPIO
 ==================================================
 
-A library to control commonly available 64x64, 32x32 or 16x32 RGB LED panels
-with the Raspberry Pi. Can support PWM up to 11Bit per channel, providing
-true 24bpp color with CIE1931 profile.
-
-Supports 3 chains with many panels each on a regular Pi.
-On a Raspberry Pi 2 or 3, you can easily chain 12 panels in that chain
-(so 36 panels total), but you can theoretically stretch that to up
-to 96-ish panels (32 chain length) and still reach
-around 100Hz refresh rate with full 24Bit color (theoretical - never tested
-this; there might likely be timing problems with the panels that will creep
-up then).
-
-With fewer colors or so-called 'outdoor panels' you can control even more,
-faster.
+## Setup
+```
+curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/rgb-matrix.sh >rgb-matrix.sh
+sudo bash rgb-matrix.sh
+```
+Use "convenience mode" and adafruit bonnet
 
 The LED-matrix library is (c) Henner Zeller <h.zeller@acm.org>, licensed with
 [GNU General Public License Version 2.0](http://www.gnu.org/licenses/gpl-2.0.txt)
 (which means, if you use it in a product somewhere, you need to make the
 source and all your modifications available to the receiver of such product so
 that they have the freedom to adapt and improve).
-
-## Discourse discussion group
-
-If you'd like help, please do not file a bug, use the discussion board instead:
-https://rpi-rgb-led-matrix.discourse.group/
 
 Overview
 --------
@@ -41,75 +28,6 @@ Check out [utils/ directory for some ready-made tools](./utils) to get started
 using the library, or the [examples-api-use/](./examples-api-use) directory if
 you want to get started programming your own utils.
 
-All Raspberry Pi versions supported
------------------------------------
-
-This supports the old Raspberry Pi's Version 1 with 26 pin header and also the
-B+ models, the Pi Zero, Raspberry Pi 2 and 3 with 40 pins, as well as the
-Compute Modules which have 44 GPIOs.
-The 26 pin models can drive one chain of RGB panels, the 40 pin models
-**up to three** chains in parallel (each chain 12 or more panels long).
-The Compute Module can drive **up to 6 chains in parallel**.
-The Raspberry Pi 2 and 3 are faster and generally perferred to the older
-models (and the Pi Zero). With the faster models, the panels sometimes
-can't keep up with the speed; check out
-this [troubleshooting section](#troubleshooting) what to do.
-
-A lightweight, non-GUI, distribution such as [DietPi] is recommended.
-[Raspbian Lite][raspbian-lite] is a bit easier to get started with and
-is a good second choice.
-
-Types of Displays
------------------
-There are various types of displays that come all with the same Hub75 connector.
-They vary in the way the multiplexing is happening so this library supports
-options to choose that.
-All these are configured by flags (or, programmatically, in an [Options struct](include/led-matrix.h#L57)).
-
-If you have a 64x32 display, you need to supply the flags
-`--led-cols=64 --led-rows=32` for instance.
-
-Depending on the Matrix, there are various configuration options that
-you might need to set for it to work. See further below in the README for the
-[detailed description of these](#changing-parameters-via-command-line-flags).
-While the `--led-rows` and `--led-cols` can be derived from simply looking
-at the panels, the other options might require some experimenting to find the
-right setting if there is no description provided by the manufacturer of
-the panel. Going through these options for experiments would typically not do
-harm, so you're free to experiment to find your setting.
-
-Flag                                | Description
-:---------------      | :-----------------
-`--led-cols`          | Columns in the LED matrix, the 'width'.
-`--led-rows`          | Rows in the LED matrix, the 'height'.
-`--led-multiplexing`  | In particular bright outdoor panels with small multiplex ratios require this. Often an indicator: if there are fewer address lines than expected: ABC (instead of ABCD) for 32 high panels and ABCD (instead of ABCDE) for 64 high panels.
-`--led-row-addr-type` | Adressing of rows; in particular panels with only AB address lines might indicate that this is needed.
-`--led-panel-type`    | Chipset of the panel. In particular if it doesn't light up at all, you might need to play with this option because it indicates that the panel requires a particular initialization sequence.
-
-Panels can be chained by connecting the output of one panel to the input of
-the next panel. You can chain quite a few together, but the refresh rate will
-reduce with longer chains.
-
-The 64x64 matrixes typically come in two kinds: with 5 address
-lines (A, B, C, D, E), or (A, B); the latter needs a `--led-row-addr-type=1`
-parameter. So-called 'outdoor panels' are typically brighter and allow for
-faster refresh-rate for the same size, but do some multiplexing internally
-of which there are a few types out there; they can be chosen with
-the `--led-multiplexing` parameter.
-
-There are some panels that have a different chip-set than the default HUB75.
-These require some initialization sequence. The current supported types are
-`--led-panel-type=FM6126A` and `--led-panel-type=FM6127`.
-
-Generally, the higher scan-rate (e.g. 1:8), a.k.a. outdoor panels generally
-allow faster refresh rate, but you might need to figure out the multiplexing
-mapping if one of the three provided does not work.
-
-Some 32x16 outdoor matrixes with 1:4 scan (e.g. [Qiangli Q10(1/4) or X10(1/4)](http://qiangliled.com/products-63.html))
-have 4 address line (A, B, C, D). For such matrices is necessary to
-use `--led-row-addr-type=2` parameter. Also the matrix Qiangli Q10(1/4)
-have "Z"-stripe pixel mapping and in this case, you'd use two parameters
-at the same time `--led-row-addr-type=2 --led-multiplexing=4`.
 
 Let's do it
 ------------
