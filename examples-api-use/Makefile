@@ -29,7 +29,7 @@ input-example : input-example.o
 text-example: text-example.o
 scrolling-text-example : scrolling-text-example.o
 clock : clock.o
-timer: timer.o
+timer : timer.o
 ledcat : ledcat.o
 pixel-mover : pixel-mover.o
 
