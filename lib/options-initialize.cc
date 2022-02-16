@@ -142,7 +142,9 @@ static bool FlagInit(int &argc, char **&argv,
   int err = 0;
   bool posix_end_option_seen = false;  // end of options '--'
 
-  char* adafruit_hat = "adafruit-hat";
+  const char* adafruit_hat = "adafruit-hat";
+  int thirtytwo = 32;
+  int sixtyfour = 64;
 
   for (/**/; it < end; ++it) {
     posix_end_option_seen |= (strcmp(*it, "--") == 0);
@@ -159,9 +161,9 @@ static bool FlagInit(int &argc, char **&argv,
       if (ConsumeStringFlag("panel-type", it, end,
                             &mopts->panel_type, &err))
         continue;
-      if (ConsumeIntFlag("rows", it, end, 32, &err))
+      if (ConsumeIntFlag("rows", it, end, &thirtytwo, &err))
         continue;
-      if (ConsumeIntFlag("cols", it, end, 64, &err))
+      if (ConsumeIntFlag("cols", it, end, &sixtyfour, &err))
         continue;
       if (ConsumeIntFlag("chain", it, end, &mopts->chain_length, &err))
         continue;
