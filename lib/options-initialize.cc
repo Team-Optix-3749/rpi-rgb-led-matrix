@@ -141,11 +141,14 @@ static bool FlagInit(int &argc, char **&argv,
   bool bool_scratch;
   int err = 0;
   bool posix_end_option_seen = false;  // end of options '--'
+
+  char* adafruit_hat = "adafruit-hat";
+
   for (/**/; it < end; ++it) {
     posix_end_option_seen |= (strcmp(*it, "--") == 0);
     if (!posix_end_option_seen) {
       if (ConsumeStringFlag("gpio-mapping", it, end,
-                            "adafruit-hat", &err))
+                            &adafruit_hat, &err))
         continue;
       if (ConsumeStringFlag("rgb-sequence", it, end,
                             &mopts->led_rgb_sequence, &err))
@@ -156,9 +159,9 @@ static bool FlagInit(int &argc, char **&argv,
       if (ConsumeStringFlag("panel-type", it, end,
                             &mopts->panel_type, &err))
         continue;
-      if (ConsumeIntFlag("rows", it, end, "32", &err))
+      if (ConsumeIntFlag("rows", it, end, 32, &err))
         continue;
-      if (ConsumeIntFlag("cols", it, end, "64", &err))
+      if (ConsumeIntFlag("cols", it, end, 64, &err))
         continue;
       if (ConsumeIntFlag("chain", it, end, &mopts->chain_length, &err))
         continue;
