@@ -182,7 +182,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Wait until we're ready to show it.
-    sleep(1000);
+    sleep(1);
 
     // Atomic swap with double buffer
     offscreen = matrix->SwapOnVSync(offscreen);
