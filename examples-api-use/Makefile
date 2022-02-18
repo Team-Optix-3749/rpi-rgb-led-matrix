@@ -1,7 +1,7 @@
 CFLAGS=-Wall -O3 -g -Wextra -Wno-unused-parameter
 CXXFLAGS=$(CFLAGS)
-OBJECTS=demo-main.o  text-example.o scrolling-text-example.o timer.o scrolling-image.o
-BINARIES=demo text-example scrolling-text-example timer scrolling-image
+OBJECTS=demo-main.o  text-example.o scrolling-text-example.o timer.o scrolling-image.o main.o
+BINARIES=demo text-example scrolling-text-example timer scrolling-image main
 
 # Where our library resides. You mostly only need to change the
 # RGB_LIB_DISTRIBUTION, this is where the library is checked out.
@@ -25,6 +25,9 @@ demo : demo-main.o $(RGB_LIBRARY)
 	$(CXX) $< -o $@ $(LDFLAGS)
 
 scrolling-image : scrolling-image.o $(RGB_LIBRARY)
+	$(CXX) $< -o $@ $(LDFLAGS)
+
+main : main.o $(RGB_LIBRARY)
 	$(CXX) $< -o $@ $(LDFLAGS)
 
 minimal-example : minimal-example.o
