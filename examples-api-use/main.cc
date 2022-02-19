@@ -239,27 +239,27 @@ void SHOW_TEXT () {
 
   int cnt = 0;
 
-  while (!interrupt_received && cnt < 150) {
-    std::cout<<"1\n";
+  while (!interrupt_received && cnt < 1000000) {
+    //std::cout<<"1\n";
     int x = 0;
     int y = 0;
     char* line = "TEST";
     const size_t last = strlen(line);
 
-    std::cout<<"2\n";
+    //std::cout<<"2\n";
 
-    std::cout<<"2a\n";
+    //std::cout<<"2a\n";
     bool line_empty = strlen(line) == 0;
-    std::cout<<"2b\n";
+    //std::cout<<"2b\n";
     if ((y + font.height() > canvas->height()) || line_empty) {
       canvas->Fill(flood_color.r, flood_color.g, flood_color.b);
       y = 0;
     }
-    std::cout<<"2c\n";
+    //std::cout<<"2c\n";
     if (line_empty)
       return;
     
-    std::cout<<"3\n";
+    //std::cout<<"3\n";
     
     // The regular text. Unless we already have filled the background with
     // the outline font, we also fill the background here.
