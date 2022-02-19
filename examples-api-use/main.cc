@@ -249,11 +249,14 @@ void SHOW_TEXT () {
     std::cout<<"2\n";
 
     if (last > 0) line[last - 1] = '\0';
+    std::cout<<"2a\n";
     bool line_empty = strlen(line) == 0;
+    std::cout<<"2b\n";
     if ((y + font.height() > canvas->height()) || line_empty) {
       canvas->Fill(flood_color.r, flood_color.g, flood_color.b);
       y = 0;
     }
+    std::cout<<"2c\n";
     if (line_empty)
       return;
     
