@@ -105,11 +105,13 @@ public:
     const int screen_height = offscreen_->height();
     const int screen_width = offscreen_->width();
     int ctr = 0;
+    long long start_time = time(NULL);
     while (!interrupt_received) {
       //std::cout << ctr << "\n";
 
-      //check if show text
-      if (ctr == 150) {
+      //check if two seconds passed
+      long long cur_time = time(NULL);
+      if (cur_time - start_time > 3) {
         show_text = true;
         break;
       }
@@ -237,9 +239,14 @@ void SHOW_TEXT () {
   Color flood_color(0, 0, 0);
   Color outline_color(0,0,0);
 
-  int cnt = 0;
+  long long start_time = time(NULL);
 
-  while (!interrupt_received && cnt < 1000000) {
+  while (!interrupt_received) {
+    long long cur_time = time(NULL);
+    if (start_time - cur_time > 3) {
+      break;
+    }
+
     //std::cout<<"1\n";
     int x = 0;
     int y = 0;
@@ -267,7 +274,6 @@ void SHOW_TEXT () {
                           color, &bg_color, line,
                           0 /*letter spacing*/);
     y += font.height();
-    cnt++;
   }
 }
 
@@ -343,6 +349,8 @@ int main(int argc, char *argv[]) {
   scroller->Run();
 
   if (show_text) {
+    canvas->Clear();
+
     std::cout << "showing text\n";
 
     show_text = false;
