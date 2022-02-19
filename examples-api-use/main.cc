@@ -10,6 +10,7 @@
 #include "pixel-mapper.h"
 #include "graphics.h"
 
+#include <iostream>
 #include <assert.h>
 #include <getopt.h>
 #include <limits.h>
@@ -331,12 +332,16 @@ int main(int argc, char *argv[]) {
 
   // Now, run our particular demo; it will exit when it sees interrupt_received.
   scroll_img:
+  std::cout << "running scrolled\n";
   scroller->Run();
 
   if (show_text) {
-
+    std::cout << "showing text\n";
 
     show_text = false;
+
+    SHOW_TEXT();
+
     goto scroll_img;
   }
 
