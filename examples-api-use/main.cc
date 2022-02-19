@@ -21,6 +21,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <networktables/NetworkTableInstance.h>
 #include <algorithm>
 
 using std::min;
@@ -33,6 +34,8 @@ using namespace rgb_matrix;
 
 rgb_matrix::Font font;
 Canvas *canvas;
+
+nt::NetworkTableInstance ntinst;
 
 volatile bool interrupt_received = false;
 volatile bool show_text = false;
@@ -278,6 +281,9 @@ void SHOW_TEXT () {
 }
 
 int main(int argc, char *argv[]) {
+  ntinst = nt::NetworkTableInstance::GetDefault();
+  ntinst.StartServer();
+
   int scroll_ms = 30;
 
   const char *demo_parameter = NULL;
@@ -346,10 +352,14 @@ int main(int argc, char *argv[]) {
   // Now, run our particular demo; it will exit when it sees interrupt_received.
   scroll_img:
   std::cout << "running scrolled\n";
+  ntinst.GetTable("LED")->GetEntry("status").SetString("scrolled");
+
   scroller->Run();
 
   if (show_text) {
     canvas->Clear();
+
+    ntinst.GetTable("LED")->GetEntry("status").SetString("text");
 
     std::cout << "showing text\n";
 
