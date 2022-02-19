@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
   Color outline_color(0,0,0);
   bool with_outline = false;
 
-  const char *bdf_font_file = NULL;
+  const char *bdf_font_file = "../fonts/10x20.bdf";
   int x_orig = 0;
   int y_orig = 0;
   int letter_spacing = 0;
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
   }
 
   if (format_lines.empty()) {
-    format_lines.push_back("%H:%M");
+    format_lines.push_back("%M:%S");
   }
 
   if (bdf_font_file == NULL) {

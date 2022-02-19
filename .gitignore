@@ -2,3 +2,8 @@
 *.a
 *~
 *.so
+.vscode/settings.json
+!libwpiHal.so
+!libwpilibc.so
+!libwpiutil.so
+!libntcore.so
