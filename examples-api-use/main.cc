@@ -106,6 +106,7 @@ public:
     const int screen_width = offscreen_->width();
     int ctr = 0;
     while (!interrupt_received) {
+      std::cout << ctr << "\n";
 
       //check if show text
       if (ctr == 1000) {
