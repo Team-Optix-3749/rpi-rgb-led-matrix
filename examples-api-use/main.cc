@@ -248,7 +248,6 @@ void SHOW_TEXT () {
 
     std::cout<<"2\n";
 
-    if (last > 0) line[last - 1] = '\0';
     std::cout<<"2a\n";
     bool line_empty = strlen(line) == 0;
     std::cout<<"2b\n";
