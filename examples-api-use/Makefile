@@ -1,3 +1,4 @@
+CXX=g++-7
 CFLAGS=-std=c++17 -Wall -O3 -g -Wextra -Wno-unused-parameter
 CXXFLAGS=$(CFLAGS)
 OBJECTS=demo-main.o  text-example.o scrolling-text-example.o timer.o scrolling-image.o main.o
@@ -28,7 +29,7 @@ scrolling-image : scrolling-image.o $(RGB_LIBRARY)
 	$(CXX) $< -o $@ $(LDFLAGS)
 
 main : main.o $(RGB_LIBRARY)
-	g++-7 $< -o $@ $(LDFLAGS)
+	$(CXX) $< -o $@ $(LDFLAGS) -lntcore
 
 minimal-example : minimal-example.o
 text-example: text-example.o

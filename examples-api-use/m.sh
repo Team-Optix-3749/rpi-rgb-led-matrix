@@ -1,1 +1,1 @@
-make main CXX=g++-7
+make main
