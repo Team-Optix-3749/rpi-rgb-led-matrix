@@ -29,7 +29,7 @@ scrolling-image : scrolling-image.o $(RGB_LIBRARY)
 	$(CXX) $< -o $@ $(LDFLAGS)
 
 main : main.o $(RGB_LIBRARY)
-	$(CXX) $< -o $@ $(LDFLAGS) -lwpilibc -lwpiHal -lntcore
+	$(CXX) $< -o $@ $(LDFLAGS) -lwpiutil -lwpilibc -lwpiHal -lntcore
 
 minimal-example : minimal-example.o
 text-example: text-example.o
