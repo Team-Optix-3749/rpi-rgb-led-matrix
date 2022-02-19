@@ -106,10 +106,10 @@ public:
     const int screen_width = offscreen_->width();
     int ctr = 0;
     while (!interrupt_received) {
-      std::cout << ctr << "\n";
+      //std::cout << ctr << "\n";
 
       //check if show text
-      if (ctr == 1000) {
+      if (ctr == 150) {
         show_text = true;
         break;
       }
@@ -239,7 +239,7 @@ void SHOW_TEXT () {
 
   int cnt = 0;
 
-  while (!interrupt_received && cnt < 1000) {
+  while (!interrupt_received && cnt < 150) {
     int x = 0;
     int y = 0;
     char* line = "TEST";
