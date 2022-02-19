@@ -243,7 +243,7 @@ void SHOW_TEXT () {
 
   while (!interrupt_received) {
     long long cur_time = time(NULL);
-    if (start_time - cur_time > 3) {
+    if (cur_time - start_time > 3) {
       break;
     }
 
