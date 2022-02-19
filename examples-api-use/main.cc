@@ -274,7 +274,7 @@ int main(int argc, char *argv[]) {
   // These are the defaults when no command-line flags are given.
   matrix_options.rows = 32;
   matrix_options.cols = 64;
-  matrix_options.hardware_mapping = "adafruit_hat";
+  matrix_options.hardware_mapping = "adafruit-hat";
   matrix_options.chain_length = 1;
   matrix_options.parallel = 1;
 
