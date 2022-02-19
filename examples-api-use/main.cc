@@ -240,11 +240,13 @@ void SHOW_TEXT () {
   int cnt = 0;
 
   while (!interrupt_received && cnt < 150) {
+    std::cout<<"1\n";
     int x = 0;
     int y = 0;
     char* line = "TEST";
     const size_t last = strlen(line);
 
+    std::cout<<"2\n";
 
     if (last > 0) line[last - 1] = '\0';
     bool line_empty = strlen(line) == 0;
@@ -254,6 +256,8 @@ void SHOW_TEXT () {
     }
     if (line_empty)
       return;
+    
+    std::cout<<"3\n";
     
     // The regular text. Unless we already have filled the background with
     // the outline font, we also fill the background here.
