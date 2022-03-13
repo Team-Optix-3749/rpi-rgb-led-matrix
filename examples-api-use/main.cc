@@ -282,7 +282,9 @@ void SHOW_TEXT () {
 
 int main(int argc, char *argv[]) {
   ntinst = nt::NetworkTableInstance::GetDefault();
-  ntinst.StartServer();
+  //ntinst.StartServer();
+  //ntinst.StartClientTeam(3749);
+  ntinst.StartClient("localhost");
 
   int scroll_ms = 30;
 
