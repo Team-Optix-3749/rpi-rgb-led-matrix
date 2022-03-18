@@ -244,6 +244,8 @@ void SHOW_TEXT () {
 
   long long start_time = time(NULL);
 
+  font = rgb_matrix::LoadFont("../fonts/helvR12.bdf");
+
   while (!interrupt_received) {
     long long cur_time = time(NULL);
     if (cur_time - start_time > 3) {
@@ -251,8 +253,8 @@ void SHOW_TEXT () {
     }
 
     //std::cout<<"1\n";
-    int x = 0;
-    int y = 0;
+    int x = 20;
+    int y = 20;
     char* line = "VENOM";
     const size_t last = strlen(line);
 
@@ -273,7 +275,7 @@ void SHOW_TEXT () {
     
     // The regular text. Unless we already have filled the background with
     // the outline font, we also fill the background here.
-    rgb_matrix::DrawText(canvas, font, 0.5, 0.5 + font.baseline(),
+    rgb_matrix::DrawText(canvas, font, x, y + font.baseline(),
                           color, &bg_color, line,
                           0 /*letter spacing*/);
     y += font.height();
