@@ -32,7 +32,7 @@ using std::max;
 
 using namespace rgb_matrix;
 
-rgb_matrix::Font font;
+rgb_matrix::LoadFont("..fonts/tom-thumb.bdf")
 Canvas *canvas;
 
 nt::NetworkTableInstance ntinst;
