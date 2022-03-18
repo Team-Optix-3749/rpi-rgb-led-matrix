@@ -252,8 +252,8 @@ void SHOW_TEXT (char* text) {
     //std::cout<<"1\n";
     int x = 0;
     int y = 0;
-    char* line = text;
-    const size_t last = strlen(line);
+    string line = text;
+    const size_t last = line.length();
 
     //std::cout<<"2\n";
 
