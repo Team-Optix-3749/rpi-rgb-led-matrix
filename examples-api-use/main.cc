@@ -24,8 +24,7 @@
 #include <networktables/NetworkTableInstance.h>
 #include <algorithm>
 
-using std::min;
-using std::max;
+using namespace std;
 
 #define TERM_ERR  "\033[1;31m"
 #define TERM_NORM "\033[0m"
