@@ -244,7 +244,7 @@ void SHOW_TEXT () {
 
   long long start_time = time(NULL);
 
-  font = rgb_matrix::LoadFont("../fonts/helvR12.bdf");
+  font = rgb_matrix::LoadFont("../fonts/tom-thumb.bdf");
 
   while (!interrupt_received) {
     long long cur_time = time(NULL);
