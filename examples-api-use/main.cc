@@ -244,7 +244,7 @@ void SHOW_TEXT () {
 
   long long start_time = time(NULL);
 
-  font = rgb_matrix::LoadFont("../fonts/tom-thumb.bdf");
+  // font = rgb_matrix::LoadFont("../fonts/tom-thumb.bdf");
 
   while (!interrupt_received) {
     long long cur_time = time(NULL);
@@ -275,7 +275,7 @@ void SHOW_TEXT () {
     
     // The regular text. Unless we already have filled the background with
     // the outline font, we also fill the background here.
-    rgb_matrix::DrawText(canvas, font, x, y + font.baseline(),
+    rgb_matrix::DrawText(canvas, font, 50, 50 + font.baseline(),
                           color, &bg_color, line,
                           0 /*letter spacing*/);
     y += font.height();
