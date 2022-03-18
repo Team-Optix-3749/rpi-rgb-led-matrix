@@ -253,8 +253,8 @@ void SHOW_TEXT () {
     }
 
     //std::cout<<"1\n";
-    int x = 20;
-    int y = 20;
+    int x = 50;
+    int y = 50;
     char* line = "VENOM";
     const size_t last = strlen(line);
 
