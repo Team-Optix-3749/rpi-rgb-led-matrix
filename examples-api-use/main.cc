@@ -32,7 +32,7 @@ using std::max;
 
 using namespace rgb_matrix;
 
-rgb_matrix::LoadFont("..fonts/tom-thumb.bdf")
+rgb_matrix::Font font;
 Canvas *canvas;
 
 nt::NetworkTableInstance ntinst;
@@ -244,8 +244,6 @@ void SHOW_TEXT () {
 
   long long start_time = time(NULL);
 
-  // font = rgb_matrix::LoadFont("../fonts/tom-thumb.bdf");
-
   while (!interrupt_received) {
     long long cur_time = time(NULL);
     if (cur_time - start_time > 3) {
@@ -288,7 +286,7 @@ int main(int argc, char *argv[]) {
   //ntinst.StartClientTeam(3749);
   ntinst.StartClient("localhost");
 
-  int scroll_ms = 30;
+  int scroll_ms = 20;
 
   const char *demo_parameter = NULL;
   RGBMatrix::Options matrix_options;
@@ -334,7 +332,7 @@ int main(int argc, char *argv[]) {
 
   if (!demo_parameter) return -1;
 
-  font.LoadFont("../fonts/10x20.bdf");
+  font.LoadFont("../fonts/tom-thumb.bdf");
 
   ImageScroller *scroller = new ImageScroller(matrix, 1, scroll_ms);
 
