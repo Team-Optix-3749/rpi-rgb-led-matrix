@@ -236,7 +236,7 @@ static int usage(const char *progname) {
   return 1;
 }
 
-void SHOW_TEXT (String text) {
+void SHOW_TEXT (char* text) {
   Color color(85, 173, 17);
   Color bg_color(0, 0, 0);
   Color flood_color(0, 0, 0);
