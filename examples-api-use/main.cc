@@ -236,7 +236,7 @@ static int usage(const char *progname) {
   return 1;
 }
 
-void SHOW_TEXT () {
+void SHOW_TEXT (String text) {
   Color color(85, 173, 17);
   Color bg_color(0, 0, 0);
   Color flood_color(0, 0, 0);
@@ -251,9 +251,9 @@ void SHOW_TEXT () {
     }
 
     //std::cout<<"1\n";
-    int x = 50;
-    int y = 50;
-    char* line = "VENOM";
+    int x = 0;
+    int y = 0;
+    char* line = text;
     const size_t last = strlen(line);
 
     //std::cout<<"2\n";
@@ -273,7 +273,7 @@ void SHOW_TEXT () {
     
     // The regular text. Unless we already have filled the background with
     // the outline font, we also fill the background here.
-    rgb_matrix::DrawText(canvas, font, 50, 50 + font.baseline(),
+    rgb_matrix::DrawText(canvas, font, x, y + font.baseline(),
                           color, &bg_color, line,
                           0 /*letter spacing*/);
     y += font.height();
@@ -367,7 +367,7 @@ int main(int argc, char *argv[]) {
 
     show_text = false;
 
-    SHOW_TEXT();
+    SHOW_TEXT("VENOM");
 
     goto scroll_img;
   }
