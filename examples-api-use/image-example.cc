@@ -107,8 +107,7 @@ void ShowAnimatedImage(const ImageVector &images, RGBMatrix *matrix) {
       if (interrupt_received) break;
       CopyImageToCanvas(image, offscreen_canvas);
       offscreen_canvas = matrix->SwapOnVSync(offscreen_canvas);
-    //   usleep(image.animationDelay() * 10000);  // 1/100s converted to usec
-        sleep(image.animationDelay() / 1000);
+      usleep(10 * 10000);  // 1/100s converted to usec, image,animationDelay()
     }
   }
 }
