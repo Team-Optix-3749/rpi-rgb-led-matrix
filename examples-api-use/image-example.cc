@@ -101,10 +101,12 @@ void ShowAnimatedImage(const ImageVector &images, RGBMatrix *matrix) {
   FrameCanvas *offscreen_canvas = matrix->CreateFrameCanvas();
   while (!interrupt_received) {
     for (const auto &image : images) {
+        cout << image.animationDelay() << endl;
       if (interrupt_received) break;
       CopyImageToCanvas(image, offscreen_canvas);
       offscreen_canvas = matrix->SwapOnVSync(offscreen_canvas);
-      usleep(image.animationDelay() * 10000 * 10000);  // 1/100s converted to usec
+    //   usleep(image.animationDelay() * 10000);  // 1/100s converted to usec
+        sleep(image.animationDelay() / 1000);
     }
   }
 }
