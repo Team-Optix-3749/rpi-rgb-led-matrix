@@ -27,6 +27,8 @@
 #include <Magick++.h>
 #include <magick/image.h>
 
+#include <iostream>
+
 using rgb_matrix::Canvas;
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::FrameCanvas;
