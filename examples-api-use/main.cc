@@ -250,8 +250,8 @@ void SHOW_TEXT (char* text) {
     }
 
     //std::cout<<"1\n";
-    int x = 0;
-    int y = 0;
+    int x = 8;
+    int y = 8;
     string line = text;
     const size_t last = line.length();
 
@@ -331,7 +331,7 @@ int main(int argc, char *argv[]) {
 
   if (!demo_parameter) return -1;
 
-  font.LoadFont("../fonts/tom-thumb.bdf");
+  font.LoadFont("../fonts/16-13O.bdf");
 
   ImageScroller *scroller = new ImageScroller(matrix, 1, scroll_ms);
 
